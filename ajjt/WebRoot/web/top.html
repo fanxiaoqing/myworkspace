@@ -1,0 +1,79 @@
+<div class="header">
+		<div class="head">
+			<div class="logo"><a href="index.html"></a></div>
+			<div class="nav">
+				<ul>
+					<li><a href="${path}/" >首页</a></li>
+					<#if oneColList ?? && oneColList?size != 0 >
+	    			<#list oneColList as onelist>
+	    			<#if onelist.id == twoCol.id>
+						<li class="navs">
+							<a href="${path}/${onelist.colimn_url!''}" class="nav_active">${onelist.column_name!''}</a>
+							<ul>
+								<#if twoColList ?? && twoColList?size!=0>
+								<#list twoColList as list>
+								<#if list.uppid == onelist.id>
+								<#if list.uppid != 215>
+								<#if list.uppid != 217>
+			                    <li><a href="${path}/${list.colimn_url!''}#child">${list.colnumtwo_name!''}</a></li>
+			                    </#if></#if></#if></#list></#if>
+		                	</ul>
+						</li>
+					<#else>
+						<li class="navs">
+							<a href="${path}/${onelist.colimn_url!''}">${onelist.column_name!''}</a>
+							<ul>
+								<#if twoColList ?? && twoColList?size!=0>
+								<#list twoColList as list>
+								<#if list.uppid == onelist.id>
+								<#if list.uppid != 215>
+								<#if list.uppid != 217>
+			                    <li><a href="${path}/${list.colimn_url!''}#child">${list.colnumtwo_name!''}</a></li>
+			                    </#if></#if></#if></#list></#if>
+		                	</ul>
+						</li>
+					</#if></#list></#if>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- banner -->
+	<div id="banner_carousel">
+		<div class="banner_img wow fadeIn">
+			<ul class="imgList">
+				<#if banner ?? && banner?size != 0>
+				<#list banner as list>
+                <li><img src="${list.theme_img!''}" ></li>
+                </#list></#if>
+			</ul>
+		</div>
+		<ul class="banner_btn wow fadeInUp"></ul>
+		<div class="wow fadeInLeft" id="banner_prev" ></div>
+		<div class="wow fadeInRight" id="banner_next" ></div>
+	</div>
+	<div id="child"></div>
+	<!-- 面包屑导航 -->
+	<div id="current_box">
+		<div class="current">
+			<div class="tab">	<!-- 标签栏 -->
+				<ul>
+					<#if twoColumnList ?? && twoColumnList?size != 0> 
+					<#list twoColumnList as twolist>
+					<#if twolist.id == oneCol.id> 
+		            <li class="tab_active"><a href="${path}/${twolist.colimn_url!''}#child">${twolist.colnumtwo_name!''}</a></li>
+		            <#else>
+		            <li><a href="${path}/${twolist.colimn_url!''}#child">${twolist.colnumtwo_name!''}</a></li>
+		            </#if></#list></#if>
+				</ul>
+			</div>
+			<div class="crumbs">	<!-- 面包屑导航 -->
+				<ul>
+					<#if twoCol ?? && oneCol ??>
+					<li><a href="${path}/">首页</a></li>
+					<li><a href="${path}/${twoCol.colimn_url!''}">${twoCol.column_name!''}</a></li>
+					<li><a href="${path}/${oneCol.colimn_url!''}">${oneCol.colnumtwo_name!''}</a></li>
+					</#if>
+				</ul>
+			</div>
+		</div>
+	</div>

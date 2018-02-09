@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="${web.web_keywords!''}">
+	<meta name="description" content="${web.web_description!''}">
+	<title>安捷交通科技</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/baguetteBox.min.css">
+</head>
+<body>
+	<!-- header -->
+	<#include "top.html"/>
+	<div class="child_content open">
+		<ul class="recruit">
+			<#if news ?? && news?size!=0>
+			<#list news as list>
+			<li class="recitem clearfix" >
+				<div class="recleft">
+					<span class="zpgw">招聘岗位</span>
+					<div class="gwmc">${list.news_title!''}</div>
+				</div>
+				<div class="recright">
+					<div class="zptj">
+						<p>${list.news_context!''}</p>
+					</div>
+					<a href="${path}/recruit_xq?id=${list.id}" class="recmore">阅读更多 &rarr;</a>
+				</div>
+			</li>
+			</#list></#if>
+		</ul>
+		<div class="con_page">
+			<ul class="page_list">
+				<li><a href="${path}${pageName}?pageNum=1${parameters}">首页</a></li>
+	            <li><a href="${path}${pageName}?pageNum=${pageBean.previusPage}${parameters}">上一页</a></li>
+	            <li>当前第${pageBean.nowPage}页</li>
+	            <li><a href="${path}${pageName}?pageNum=${pageBean.nextPage}${parameters}">下一页</a></li>
+	            <li><a href="${path}${pageName}?pageNum=${pageBean.lastPage}${parameters}">末页</a></li>
+	            <li><span class="pageinfo">共 <strong>${pageBean.allPages}</strong>页<strong>${pageBean.allCount}</strong>条</span></li>
+			</ul>
+		</div>
+	</div>
+	
+	<#include "bottom.html"/>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/move.js"></script>
+<script src="js/index.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script>
+
+	fnBanner("banner_carousel","imgList","banner_btn","banner_prev","banner_next");
+
+	baguetteBox.run('.photo');
+
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		new WOW().init();
+	};
+
+</script>
+
+<script>
+	var startTime = 0, //翻屏起始时间  
+        endTime = 0;
+
+   var scrollFunc = function (e) {
+   		startTime = new Date().getTime(); 
+        var direct = 0;
+        e = e || window.event;
+        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+        	startTime = new Date().getTime();  
+           	if((endTime - startTime) < -1000){
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+            		var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop>=100&&oTop<=600){
+	                	$('html,body').animate({scrollTop: 0}, 300);
+	                }
+	            }
+	 
+	            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop<600){
+	                	$('html,body').animate({scrollTop: 600}, 300);
+	                }
+	            }
+	            endTime = new Date().getTime();
+        	}
+        } else if (e.detail) {  //Firefox滑轮事件
+            startTime = new Date().getTime();  
+           	if((endTime - startTime) < -1000){
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+	            		var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+		                if(oTop>100&&oTop<610){
+		                	$('html,body').animate({scrollTop: 0}, 300);
+		                }
+	            	}
+	 
+	            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop<600){
+	                	$('html,body').animate({scrollTop: 600}, 300);
+	                }
+	            }
+	            endTime = new Date().getTime();
+        	}
+        }
+        // ScrollText(direct);
+    }
+    //给页面绑定滑轮滚动事件
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    //滚动滑轮触发scrollFunc方法
+    window.onmousewheel = document.onmousewheel = scrollFunc;  
+</script>
+</html>

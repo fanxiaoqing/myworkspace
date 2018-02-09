@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>个人简历</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+  </head>
+  
+  <body onload="getPath('${path}')">
+    <div>
+    	<table width="100%" border="1" cellpadding="0" cellspacing="0" style="line-height: 40px;">
+           <tbody>
+           <tr>
+               <td style="text-indent:2%;">
+                   姓 名：${resume.username!''}
+               </td>
+               <td style="text-indent:2%;">
+                   在校学生：${resume.graduates!''}
+               </td>
+               <td style="text-indent:2%;">
+                   民族：${resume.national!''}
+               </td>
+               <td style="text-indent:2%;">
+                   婚否：${resume.marriage!''}
+               </td>
+           </tr>
+           <tr>
+               <td style="text-indent:2%;">
+                   年龄：${resume.age!''}
+               </td>
+               <td style="text-indent:2%;">
+                   性别：${resume.sex!''}
+               </td>
+               <td style="text-indent:2%;">
+                   应聘职位：${resume.position!''}
+               </td>
+               <td style="text-indent:2%;">
+                   出生日期：${resume.birthday!''}
+               </td>
+           </tr>
+           <tr>
+               <td style="text-indent:2%;">
+                   联系电话：${resume.phone!''}
+               </td>
+               <td style="text-indent:2%;">
+                   薪资要求：${resume.salary!''}
+               </td>
+               <td style="text-indent:2%;">
+                   毕业院校：${resume.universities!''}
+               </td>
+               <td style="text-indent:2%;">
+                   电子邮件：${resume.email!''}
+               </td>
+           </tr>
+           <tr>
+               <td style="text-indent:2%;">
+                   通讯地址
+               </td>
+               <td colspan="3">
+                   ${resume.address!''}
+               </td>
+           </tr>
+           <tr>
+               <td style="text-indent:2%;text-align: center;" colspan="4">
+                   个人技能
+               </td>
+           </tr>
+           <tr>
+               <td colspan="4" style="height: 50px;">
+                   ${resume.skills!''}
+               </td>
+           </tr>
+           <tr>
+               <td style="text-indent:2%;text-align: center;" colspan="4">
+                   工作经验
+               </td>
+           </tr>
+           <tr>
+               <td colspan="4" style="height: 50px;">
+                   ${resume.experience!''}
+               </td>
+           </tr>
+           <tr>
+               <td style="text-indent:2%;text-align: center;" colspan="4">
+                   自我评价
+               </td>
+           </tr>
+           <tr>
+               <td colspan="4" style="height: 50px;">
+                   ${resume.assessment!''}
+               </td>
+           </tr>
+           </tbody>
+       </table>
+    </div>
+  </body>
+</html>

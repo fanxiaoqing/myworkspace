@@ -1,0 +1,40 @@
+.buju{
+	margin-bottom: 20px;
+}
+
+.wenzi{
+	width: 100px;
+	text-align: right;
+}
+
+.wenben{
+	width: 400px;
+	height: 30px;
+	border: 1px solid #95E4E4
+}
+
+.upbutton{
+	width: 80px;
+	height: 30px;
+	margin: 0px auto;
+	background-color: #E84444;
+}
+
+.box{
+	width:75px;
+	background:url(../images/button1.gif); 
+	border:0; 
+	height:21px; 
+	display:-moz-inline-box;
+	display:inline-block;
+	font-size:13px; 
+	text-decoration: none;
+    text-align:center;
+    line-height:21px;
+    color:#222;
+    margin:0 5px 40px;
+}
+.box:hover{
+	background:url(../images/button1.gif) 0 -21px;
+}
+

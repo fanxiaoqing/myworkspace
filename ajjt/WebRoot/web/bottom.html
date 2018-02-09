@@ -1,0 +1,66 @@
+<div class="footer wow fadeIn" data-wow-delay="0.3s">
+		<div class="foot">
+			<ul>
+				<li>
+					<a href="${path}/about?columnId=219#child">走进我们</a>
+					<ul>
+	                    <li><a href="${path}/about?columnId=219#child">公司简介</a></li>
+	                    <li><a href="${path}/honor?columnId=220#child">荣誉资质</a></li>
+	                    <li><a href="${path}/about?columnId=221#child">企业宗旨</a></li>
+	                    <li><a href="${path}/about?columnId=222#child">团队介绍</a></li>
+	            	</ul>
+				</li>
+				<li>
+					<a href="${path}/file?columnId=229#child">服务支持</a>
+					<ul>
+	                    <li><a href="${path}/file?columnId=229#child">资料下载</a></li>
+	                    <li><a href="${path}/about?columnId=230#child">技术服务</a></li>
+	                    <li><a href="${path}/about?columnId=231#child">售后服务</a></li>
+	            	</ul>
+				</li>
+				<li>
+					<a href="${path}/contact?columnId=232#child">联系我们</a>
+					<ul>
+						<#if web ??>
+	                    <li>电话：${web.head_phone!''}</li>
+	                    <li>传真：${web.head_fax!''}</li>
+	                    <li>邮箱：${web.head_email!''}</li>
+	                    <li>地址：${web.head_address!''}</li>
+	                    </#if>
+	                </ul>
+				</li>
+			</ul>
+			<div class="footer_right">
+				<ul>
+					<li>技术支持：<a href="http://hnfirst.com/" target="_blank">锐拓科技</a></li>
+					<li><a href="">豫IPC备00000000号</a></li>
+					<li>&copy; 2017 河南安捷交通科技有限公司 版权所有</li>
+					<li><a href="${path}/contact?columnId=232#child">在线留言</a> | <a href="${path}/map?columnId=233#child">电子地图</a> | <a href="${path}/recruit?columnId=238#child">加入我们</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="frien_link">
+			<ul>
+				<span>友情链接：</span>
+				<li><a href="http://www.haqi.gov.cn/">河南省质量技术监督局</a></li>
+				<li><a href="http://www.zbytb.com/">河南招标采购网</a></li>
+				<li><a href="http://www.zhb.gov.cn/">中国环境标准网</a></li>
+				<li><a href="http://www.mot.gov.cn/">中华人民共和国交通运输部</a></li>
+				<li><a href="http://www.camra.org.cn/">中国汽车维修行业协会</a></li>
+				<#if web ??>
+				<li >您是到访的第${web.web_count!''}位用户</li>
+				</#if>
+			</ul>
+		</div>
+	</div>
+	<div id="side_box">
+		<div id="wx_erwm">
+			<img src="images/wxqr.png" alt="官方微信">
+		</div>
+		<div id="side">
+			<div id="qq_btn" class="side_btn"><a href="http://wpa.qq.com/msgrd?v=3&uin=505969957&site=qq&menu=yes" target="_bank"></a></div>
+			<div id="wx_btn" class="side_btn"></div>
+			<div id="top_btn" class="side_btn"></div>
+		</div>
+	</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>锐拓科技-管理登录</title>
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link href="${path}/css/login.css" type="text/css" rel="stylesheet">
+    <script src="${path}/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="${path}/js/layer/layer.js" type="text/javascript"></script>
+	<script src="${path}/js/login.js" type="text/javascript"></script>
+  </head>
+  
+  <body onload="getPath('${path}')" onkeydown="keyLogin(event);">
+    <div class="login">
+	    <div class="message">锐拓科技-后台登录</div>
+	    <div id="darkbannerwrap"></div>
+	    <form method="post">
+			<input name="action" value="login" type="hidden">
+			<input name="username" id="username" onblur="checkUserName()" placeholder="用户名" required="" type="text">
+			<hr class="hr15">
+			<input name="password" id="password" onblur="checkPassWord()" placeholder="密码" required="" type="password">
+			<hr class="hr15">
+			<input value="登录" style="width:100%;" type="button" onclick="login()">
+			<hr class="hr20">
+		</form>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="${web.web_keywords!''}">
+	<meta name="description" content="${web.web_description!''}">
+	<title>安捷交通科技</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/baguetteBox.min.css">
+</head>
+<body>
+	<!-- header -->
+	<div class="header">
+		<div class="head">
+			<div class="logo wow fadeInDown"><a href="index.html"></a></div>
+			<div class="nav">
+				<ul>
+					<li><a href="${path}/" class="nav_active">首页</a></li>
+					<#if oneColList ?? && oneColList?size != 0>
+	    			<#list oneColList as onelist>
+					<li class="navs">
+						<a href="${path}/${onelist.colimn_url!''}">${onelist.column_name!''}</a>
+						<ul>
+							<#if twoColList ?? && twoColList?size!=0>
+							<#list twoColList as list>
+							<#if list.uppid == onelist.id>
+							<#if list.uppid != 215>
+							<#if list.uppid != 217>
+		                    		<li><a href="${path}/${list.colimn_url!''}#child">${list.colnumtwo_name!''}</a></li>
+		                    		</#if></#if></#if></#list></#if>
+	                	</ul>
+					</li>
+					</#list></#if>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- banner -->
+	<div id="banner_carousel">
+		<div class="banner_img wow fadeIn">
+			<ul class="imgList">
+				<#if banner ?? && banner?size != 0>
+				<#list banner as list>
+                <li><img src="${list.theme_img!''}" ></li>
+                </#list></#if>
+			</ul>
+		</div>
+		<ul class="banner_btn wow fadeInUp"></ul>
+		<div class="wow fadeInLeft" id="banner_prev" ></div>
+		<div class="wow fadeInRight" id="banner_next" ></div>
+	</div>
+	<!-- 解决方案 -->
+	<div class="solution">
+		<ul>
+			<li class="wow fadeInUp" data-wow-delay="0s">
+				<div class="solution_img"><img src="images/solution_01.jpg" alt=""></div>
+				<ul>
+					<#if proList01 ?? && proList01?size!=0>
+					<#list proList01 as list>
+					<li><a href="${path}/product_xq?id=${list.id}">${list.pro_title!''}</a></li>
+					</#list></#if>
+				</ul>
+				<a href="${path}/product?columnId=225#child">机动车安全性能检测</a>
+			</li>
+			<li class="wow fadeInUp" data-wow-delay="0.1s">
+				<div class="solution_img"><img src="images/solution_02.jpg" alt=""></div>
+				<ul>
+					<#if proList02 ?? && proList02?size!=0>
+					<#list proList02 as list>
+					<li><a href="${path}/product_xq?id=${list.id}">${list.pro_title!''}</a></li>
+					</#list></#if>
+				</ul>
+				<a href="${path}/product?columnId=226#child">机动车环保性能检测</a>
+			</li>
+			<li class="wow fadeInUp" data-wow-delay="0.2s">
+				<div class="solution_img"><img src="images/solution_03.jpg" alt=""></div>
+				<ul>
+					<#if proList03 ?? && proList03?size!=0>
+					<#list proList03 as list>
+					<li><a href="${path}/product_xq?id=${list.id}">${list.pro_title!''}</a></li>
+					</#list></#if>
+				</ul>
+				<a href="${path}/product?columnId=227#child">机动车综合性能检测</a>
+			</li>
+			<li class="wow fadeInUp" data-wow-delay="0.3s">
+				<div class="solution_img"><img src="images/solution_04.jpg" alt=""></div>
+				<ul>
+					<#if proList04 ?? && proList04?size!=0>
+					<#list proList04 as list>
+					<li><a href="${path}/product_xq?id=${list.id}">${list.pro_title!''}</a></li>
+					</#list></#if>
+				</ul>
+				<a href="${path}/product?columnId=228#child">制造厂整车质检</a>
+			</li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	<div class="about_news">
+		<div class="about wow fadeInUp" data-wow-delay="0.3s" >
+			<#if news1 ??>
+			<div class="title">
+				<h2>公司简介</h2>
+				<span>/ ABOUT US</span>
+				<a class="more" href="${path}/about?columnId=219#child">MORE</a>
+			</div>
+			<div class="about_img">
+				<img src="${news1.news_img!''}" alt="">
+			</div>
+			<div class="about_txt">
+				<#if
+				news1.news_context?replace("<.*?>","","r")?replace("&nbsp;","")?length lt 195>
+				${news1.news_context?replace("<.*?>","","r")?replace("&nbsp;","")!''} <#else>
+				${news1.news_context?replace("<.*?>","","r")?replace("&nbsp;","")[0..195]}...... </#if>  
+			</div>
+			</#if>
+		</div>
+		<div class="news wow fadeInUp" data-wow-delay="0.4s">
+			<div class="title">
+				<h2>新闻中心</h2>
+				<span>/ Company news</span>
+				<a class="more" href="${path}/news?columnId=224#child">MORE</a>
+			</div>
+			<div class="news_box">
+				<ul>
+					<#if news3 ?? && news3?size!=0>
+					<#list news3 as list>
+					<li>
+						<a href="${path}/news_xq?id=${list.id}"><h2><#if
+						list.news_title?replace("<.*?>","","r")?replace("&nbsp;","")?length lt 15>
+						${list.news_title?replace("<.*?>","","r")?replace("&nbsp;","")!''} <#else>
+						${list.news_title?replace("<.*?>","","r")?replace("&nbsp;","")[0..15]}...... </#if></h2></a>
+						<span class="news_list_time">[${list.addtime?string('yyyy-MM-dd')}]</span>
+					</li>
+					</#list></#if>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="case wow fadeInUp" data-wow-delay="0.5s">
+		<div class="title">
+			<h2>成功案例</h2>
+			<span>/ Successful case</span>
+			<a class="more" href="${path}/anli?columnId=237#child">MORE</a>
+		</div>
+		<div class="case_box">
+			<ul>
+				<#if anli ?? && anli?size!=0>
+				<#list anli as list>
+				<li>
+					<a href="${path}/case_xq?id=${list.id}">
+						<div>
+							<h4>${list.pro_title!''}</h4>
+							<span>查看详情</span>
+						</div>
+						<img src="${list.pro_img!''}" alt="">
+					</a>
+				</li>
+				</#list></#if>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div id="case_prev" ></div>
+		<div id="case_next" ></div>
+	</div>
+	<#include "bottom.html"/>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/move.js"></script>
+<script src="js/index.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script>
+
+	fnBanner("banner_carousel","imgList","banner_btn","banner_prev","banner_next");
+
+	fnNewsList();
+
+	fnCase();
+
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		new WOW().init();
+	};
+
+</script>
+</html>

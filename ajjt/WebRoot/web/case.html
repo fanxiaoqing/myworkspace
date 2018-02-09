@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="${web.web_keywords!''}">
+	<meta name="description" content="${web.web_description!''}">
+	<title>安捷交通科技</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/baguetteBox.min.css">
+</head>
+<body>
+	<!-- header -->
+	<div class="header">
+		<div class="head">
+			<div class="logo"><a href="index.html"></a></div>
+			<div class="nav">
+				<ul>
+					<li><a href="${path}/" >首页</a></li>
+					<#if oneColList ?? && oneColList?size != 0 >
+	    			<#list oneColList as onelist>
+	    			<#if onelist.id == twoCol.id>
+						<li class="navs">
+							<a href="${path}/${onelist.colimn_url!''}" class="nav_active">${onelist.column_name!''}</a>
+							<ul>
+								<#if twoColList ?? && twoColList?size!=0>
+								<#list twoColList as list>
+								<#if list.uppid == onelist.id>
+								<#if list.uppid != 215>
+								<#if list.uppid != 217>
+			                    <li><a href="${path}/${list.colimn_url!''}#child">${list.colnumtwo_name!''}</a></li>
+			                    </#if></#if></#if></#list></#if>
+		                	</ul>
+						</li>
+					<#else>
+						<li class="navs">
+							<a href="${path}/${onelist.colimn_url!''}">${onelist.column_name!''}</a>
+							<ul>
+								<#if twoColList ?? && twoColList?size!=0>
+								<#list twoColList as list>
+								<#if list.uppid == onelist.id>
+								<#if list.uppid != 215>
+								<#if list.uppid != 217>
+			                    <li><a href="${path}/${list.colimn_url!''}#child">${list.colnumtwo_name!''}</a></li>
+			                    </#if></#if></#if></#list></#if>
+		                	</ul>
+						</li>
+					</#if></#list></#if>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- banner -->
+	<div id="banner_carousel">
+		<div class="banner_img wow fadeIn">
+			<ul class="imgList">
+				<#if banner ?? && banner?size != 0>
+				<#list banner as list>
+                <li><img src="${list.theme_img!''}" ></li>
+                </#list></#if>
+			</ul>
+		</div>
+		<ul class="banner_btn wow fadeInUp"></ul>
+		<div class="wow fadeInLeft" id="banner_prev" ></div>
+		<div class="wow fadeInRight" id="banner_next" ></div>
+	</div>
+	<div id="child"></div>
+	<!-- 面包屑导航 -->
+	<div id="current_box">
+		<div class="current">
+			<div class="tab">	<!-- 标签栏 -->
+				<ul>
+					<#if twoColumnList ?? && twoColumnList?size != 0> 
+					<#list twoColumnList as twolist>
+					<#if twolist.id == oneCol.id> 
+		            <li class="tab_active"><a href="${path}/${twolist.colimn_url!''}#child">${twolist.colnumtwo_name!''}</a></li>
+		            <#else>
+		            <li><a href="${path}/${twolist.colimn_url!''}#child">${twolist.colnumtwo_name!''}</a></li>
+		            </#if></#list></#if>
+				</ul>
+			</div>
+			<div class="crumbs">	<!-- 面包屑导航 -->
+				<ul>
+					<#if twoCol ?? && oneCol ??>
+					<li><a href="${path}/">首页</a></li>
+					<li><a href="${path}/${twoCol.colimn_url!''}">${twoCol.column_name!''}</a></li>
+					</#if>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="child_content">
+		<ul class="case_list clearfix">
+			<#if news ?? && news?size!=0>
+			<#list news as list>
+			<li>
+				<a href="${path}/case_xq?id=${list.id}">
+					<div class="case_name">
+						<h4><#if
+		list.pro_title?replace("<.*?>","","r")?replace("&nbsp;","")?length lt 8>
+		${list.pro_title?replace("<.*?>","","r")?replace("&nbsp;","")!''} <#else>
+		${list.pro_title?replace("<.*?>","","r")?replace("&nbsp;","")[0..8]}...... </#if></h4>
+						<span>查看详情&rarr;</span>
+					</div>
+					<img src="${list.pro_img!''}" alt="">
+				</a>
+			</li>
+			</#list></#if>
+		</ul>
+		<div class="con_page">
+			<ul class="page_list">
+				<li><a href="${path}${pageName}?pageNum=1${parameters}">首页</a></li>
+	            <li><a href="${path}${pageName}?pageNum=${pageBean.previusPage}${parameters}">上一页</a></li>
+	            <li>当前第${pageBean.nowPage}页</li>
+	            <li><a href="${path}${pageName}?pageNum=${pageBean.nextPage}${parameters}">下一页</a></li>
+	            <li><a href="${path}${pageName}?pageNum=${pageBean.lastPage}${parameters}">末页</a></li>
+	            <li><span class="pageinfo">共 <strong>${pageBean.allPages}</strong>页<strong>${pageBean.allCount}</strong>条</span></li>
+			</ul>
+		</div>
+	</div>
+	
+	<#include "bottom.html"/>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/move.js"></script>
+<script src="js/index.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script>
+
+	fnBanner("banner_carousel","imgList","banner_btn","banner_prev","banner_next");
+
+	baguetteBox.run('.photo');
+
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		new WOW().init();
+	};
+
+</script>
+
+<script>
+	var startTime = 0, //翻屏起始时间  
+        endTime = 0;
+
+   var scrollFunc = function (e) {
+   		startTime = new Date().getTime(); 
+        var direct = 0;
+        e = e || window.event;
+        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+        	startTime = new Date().getTime();  
+           	if((endTime - startTime) < -1000){
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+            		var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop>=100&&oTop<=600){
+	                	$('html,body').animate({scrollTop: 0}, 300);
+	                }
+	            }
+	 
+	            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop<600){
+	                	$('html,body').animate({scrollTop: 600}, 300);
+	                }
+	            }
+	            endTime = new Date().getTime();
+        	}
+        } else if (e.detail) {  //Firefox滑轮事件
+            startTime = new Date().getTime();  
+           	if((endTime - startTime) < -1000){
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+	            		var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+		                if(oTop>100&&oTop<610){
+		                	$('html,body').animate({scrollTop: 0}, 300);
+		                }
+	            	}
+	 
+	            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop<600){
+	                	$('html,body').animate({scrollTop: 600}, 300);
+	                }
+	            }
+	            endTime = new Date().getTime();
+        	}
+        }
+        // ScrollText(direct);
+var oSide=document.getElementById('side');
+        var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+        if(oTop>300){
+	        startMove(oSide,{height:180},5);
+	    }else{
+	        startMove(oSide,{height:121},5);
+	    }
+    }
+    //给页面绑定滑轮滚动事件
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    //滚动滑轮触发scrollFunc方法
+    window.onmousewheel = document.onmousewheel = scrollFunc;  
+</script>
+</html>

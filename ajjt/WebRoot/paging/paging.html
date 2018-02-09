@@ -1,0 +1,9 @@
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+<link href="${path}/admin/css/public.css" rel="stylesheet" type="text/css" />  
+<script src="${path}/js/upimage.js" type="text/javascript"></script>
+<a href="${path}${pageName}?pageNum=1${parameters}" class="box">首页</a>
+<a href="${path}${pageName}?pageNum=${pageBean.previusPage}${parameters}" class="box">上一页</a>
+当前第${pageBean.nowPage}页
+<a href="${path}${pageName}?pageNum=${pageBean.nextPage}${parameters}" class="box">下一页</a>
+<a href="${path}${pageName}?pageNum=${pageBean.lastPage}${parameters}" class="box">末页</a>
+<span>共${pageBean.allPages}页</span>

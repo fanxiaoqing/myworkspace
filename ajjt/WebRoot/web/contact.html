@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="${web.web_keywords!''}">
+	<meta name="description" content="${web.web_description!''}">
+	<title>安捷交通科技</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/baguetteBox.min.css">
+	
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/layer/layer.js" type="text/javascript"></script>
+    <script src="js/message.js" type="text/javascript"></script>
+</head>
+<body onload="getPath('${path}')">
+	<!-- header -->
+	<#include "top.html"/>
+	
+	<div class="child_content clearfix">
+		<div class="contact">
+			<#if web ??>
+			<h2>${web.web_title!''}</h2>
+			<h3>想详细了解我们的产品，对我们的产品、服务有任何意见或建议；您都可以直接联系安捷相关人员，我们提供了各种实时联系的方式，除了电话联系，您还可以选择以下您认为方便的方法：</h3>
+			<p>地址：${web.head_address!''}</p>
+			<p>电话：${web.head_phone!''}</p>
+			<p>传真：${web.head_fax!''}</p>
+			<p>邮箱：${web.head_email!''}</p>
+			<p>网址：${web.web_keywords!''}</p>
+			</#if>
+		</div>
+		<div class="message">
+			<h2>在线留言</h2>
+			<ul>
+	    		<li><span>姓名：</span><input id="username" name="username" type="text" placeholder="姓名" required onblur="checkUsername()"></li>
+	    		<li><span>联系电话：</span><input id="phone" name="phone" type="tel" placeholder="联系电话" required onblur="checkPhone()"></li>
+	    		<li class="clear"><span>电子邮箱：</span><input id="email" name="email" type="email" placeholder="电子邮箱" onblur="checkEmail()"></li>
+	    		<li><span>留言内容：</span><textarea id="context" name="context"  placeholder="请输入留言内容" required ></textarea></li>
+	    		<li><li><a href="" class="submit_btn btn" onclick="submitFrom()">提&nbsp;&nbsp;&nbsp;&nbsp;交</a></li></li>
+	    	</ul>
+		</div>
+	</div>
+	
+	<#include "bottom.html"/>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/move.js"></script>
+<script src="js/index.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script>
+
+	fnBanner("banner_carousel","imgList","banner_btn","banner_prev","banner_next");
+
+	baguetteBox.run('.photo');
+
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		new WOW().init();
+	};
+
+</script>
+
+<script>
+	var startTime = 0, //翻屏起始时间  
+        endTime = 0;
+
+   var scrollFunc = function (e) {
+   		startTime = new Date().getTime(); 
+        var direct = 0;
+        e = e || window.event;
+        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+        	startTime = new Date().getTime();  
+           	if((endTime - startTime) < -1000){
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+            		var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop>=100&&oTop<=600){
+	                	$('html,body').animate({scrollTop: 0}, 300);
+	                }
+	            }
+	 
+	            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop<600){
+	                	$('html,body').animate({scrollTop: 600}, 300);
+	                }
+	            }
+	            endTime = new Date().getTime();
+        	}
+        } else if (e.detail) {  //Firefox滑轮事件
+            startTime = new Date().getTime();  
+           	if((endTime - startTime) < -1000){
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+	            		var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+		                if(oTop>100&&oTop<610){
+		                	$('html,body').animate({scrollTop: 0}, 300);
+		                }
+	            	}
+	 
+	            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                var oTop=document.documentElement.scrollTop||document.body.scrollTop;
+	                if(oTop<600){
+	                	$('html,body').animate({scrollTop: 600}, 300);
+	                }
+	            }
+	            endTime = new Date().getTime();
+        	}
+        }
+        // ScrollText(direct);
+    }
+    //给页面绑定滑轮滚动事件
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    //滚动滑轮触发scrollFunc方法
+    window.onmousewheel = document.onmousewheel = scrollFunc;  
+</script>
+</html>

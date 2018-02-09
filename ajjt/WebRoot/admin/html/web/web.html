@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>网站信息</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link href="${path}/admin/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="${path}/admin/css/buttons.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${path}/js/jquery-1.11.2.min.js"></script>
+    <script src="${path}/admin/html/web/js/web.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="${path}/js/layer/layer.js" type="text/javascript" charset="utf-8" ></script>
+  </head>
+  
+  <body onload="getPath('${path}')">
+    <div style="width: 600px;margin: 0px auto;">
+	    <form action="${path}/web/updateWeb" method="post" onsubmit="return checkAll();">
+	    	<div class="buju" style="margin-top: 50px;">
+		    	<span>　网站名称：</span>
+		    	<input id="web_title" name="web_title" onblur="checkWebTitle()" type="text" value="${web.web_title!''}" class="wenben">
+	    	</div>
+	        <div class="buju">
+		    	<span>网站负责人：</span>
+		    	<input id="web_head" name="web_head" onblur="checkWebHead()" type="text" value="${web.web_head!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>负责人电话：</span>
+		    	<input id="head_phone" name="head_phone" onblur="checkWebPhone()" type="text" value="${web.head_phone!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>　负责人QQ：</span>
+		    	<input id="head_qq" name="head_qq" onblur="checkWebQQ()" type="text" value="${web.head_qq!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>负责人微信：</span>
+		    	<input id="head_wx" name="head_wx" onblur="checkWebWX()" type="text" value="${web.head_wx!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>负责人邮箱：</span>
+		    	<input id="head_em" name="head_em" onblur="checkWebEM()" type="text" value="${web.head_email!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>　公司传真：</span>
+		    	<input id="head_fax" name="head_fax" type="text" value="${web.head_fax!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>　公司地址：</span>
+		    	<input id="head_ads" name="head_ads" onblur="checkWebADS()" type="text" value="${web.head_address!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>网站地址：</span>
+		    	<input id="web_keywords" name="web_keywords" type="text" value="${web.web_keywords!''}" class="wenben">
+	    	</div>
+	    	<div class="buju">
+		    	<span>　网站描述：</span>
+		    	<textarea id="web_description" name="web_description" style="width: 400px;height: 60px;" class="wenben">${web.web_description!''}</textarea>
+	    	</div>
+	    	<div class="buju">
+		    	<span>　版权信息：</span>
+		    	<input id="web_copyright" name="web_copyright" type="text" value="${web.web_copyright!''}" class="wenben">
+	    	</div>
+	    	<div class="buju" style="text-align: center;">
+		    	<input type="submit" value="更新信息" class="button button-caution button-pill button-jumbo" />
+	    	</div>
+	    </form>
+    </div>
+    <script type="text/javascript">
+    $(function(){
+    	var msg = "${msg!'null'}";
+		if(msg != "null"){
+			layer.alert(msg);
+		}
+	});
+    </script>
+  </body>
+</html>

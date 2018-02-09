@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>添加主题</title>
+	<meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link href="${path}/admin/css/public.css" rel="stylesheet" type="text/css" />
+	<link href="${path}/admin/css/buttons.css" rel="stylesheet" type="text/css" />
+	<link href="${path}/admin/css/table.css" rel="stylesheet" type="text/css" />
+	<script src="${path}/admin/html/product/js/product.js" type="text/javascript"></script>
+	<script src="${path}/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="${path}/js/upimage.js" type="text/javascript"></script>
+	<script src="${path}/js/ueditor/ueditor.config.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="${path}/js/ueditor/ueditor.all.min.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="${path}/js/ueditor/lang/zh-cn/zh-cn.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="${path}/js/layer/layer.js" type="text/javascript"></script>
+	<style type="text/css">
+	*{margin:0;padding:0;} 
+	a{text-decoration:none;} 
+	.btn_addPic{ 
+		display: block; 
+		position: relative; 
+		width: 140px; 
+		height: 39px; 
+		overflow: hidden; 
+		border: 1px solid #EBEBEB; 
+		background: none repeat scroll 0 0 #F3F3F3; 
+		color: #999999; 
+		cursor: pointer; 
+		text-align: center; 
+	} 
+	.btn_addPic span{display: block;line-height: 39px;} 
+	.btn_addPic em { 
+		background:url(http://p7.qhimg.com/t014ce592c1a0b2d489.png) 0 0; 
+		display: inline-block; 
+		width: 18px; 
+		height: 18px; 
+		overflow: hidden; 
+		margin: 10px 5px 10px 0; 
+		line-height: 20em; 
+		vertical-align: middle; 
+	} 
+	.btn_addPic:hover em{background-position:-19px 0;} 
+	.filePrew { 
+		display: block; 
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		width: 140px; 
+		height: 39px; 
+		font-size: 100px; /* 增大不同浏览器的可点击区域 */ 
+		opacity: 0; /* 实现的关键点 */ 
+		filter:alpha(opacity=0);/* 兼容IE */ 
+	} 
+	</style>
+  </head>
+  
+  <body onload="getPath('${path}')">
+    <div style="width: 80%;margin: 0px auto;">
+   		<div class="buju" style="margin-top: 50px;font-size: 14px;font-weight: bold;">
+	    	<span>标题：</span>
+	    	<input id="themeTile" name="themeTile" onblur="checkTitle()" type="text" value="" maxlength="150" class="wenben">
+	    	　　　
+	    	<span>所属栏目：</span>
+	    	<select class="wenben" style="width: 120px;" id="columnId" onchange="checkType()">
+	    	    <option value="0">选择二级栏目</option>
+	    		<#if twoThemeColList?? && twoThemeColList?size!=0>
+	    			<#list twoThemeColList as list>
+	    				<option value="${list.id}">${list.colnumtwo_name}</option>
+	    			</#list>
+	    		</#if>
+	    	</select>&nbsp;&nbsp;
+	    	<!-- <select class="wenben" style="width: 120px;" id="columnId" onblur="checkTypes()">
+	    	    <option value="0">选择三级栏目</option>
+	    				
+	    	</select> -->
+    	</div>
+    	<div class="buju" style="margin-top:30px;font-size: 14px;font-weight: bold;">
+    		<span>产品图片：</span>
+    		<form id="upload0" action="${path}/img/uploadImg" method="post" enctype="multipart/form-data" target="hidden_frame0">
+		    	<iframe name="hidden_frame0" id="hidden_frame0" style="display: none"></iframe>
+		    	<a class="btn_addPic" href="javascript:void(0);">
+			    	<span><em>+</em>添加图片</span><input class="filePrew" onchange="upload()" type="file" id="file" name="file">
+			    	<img id="preimg" src="">
+		    	</a>
+		    </form>
+		    <input id="testimg" name="testimg" value="" type="hidden"/>
+    	</div>
+    	<div class="buju" style="margin-top:30px;font-size: 14px;font-weight: bold;">
+    		<span>产品内容：</span>
+    		<div>
+    			<textarea id="editor" name="editor" style="width:1024px;height:550px;"></textarea>
+    			<script id="editor" type="text/plain" style="width:1024px;height:550px;"></script>
+			    <script type="text/javascript">
+			    	UE.delEditor("editor");	
+			    	var ue = UE.getEditor("editor");
+			    </script>
+    		</div>
+    		
+    	</div>
+    	<!-- <div class="buju" style="margin-top:30px;font-size: 14px;font-weight: bold;">
+    		<span>性能及用途：</span>
+    		<div>
+    			<textarea id="ineditor" name="ineditor" style="width:1024px;height:550px;"></textarea>
+    			<script id="ineditor" type="text/plain" style="width:1024px;height:550px;"></script>
+			    <script type="text/javascript">
+			    	UE.delEditor("ineditor");	
+			    	var ueIn = UE.getEditor("ineditor");
+			    </script>
+    		</div>
+    	</div> -->
+    	<div class="buju" style="margin-left:40%;">
+	    	<input type="button" value="保存" onclick="saveProduct()" class="button button-caution button-pill button-jumbo" />
+    	</div>
+    </div>
+  </body>
+</html>
